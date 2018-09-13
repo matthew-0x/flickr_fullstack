@@ -2,16 +2,13 @@ const express = require('express');
 const app = express();
 const logger = require('morgan');
 const photosRoutes = require ('./server/routes/photosRoutes');
+const healthCheckRoutes = require ('./server/routes/healthcheckRoute');
+const cors = require('cors');
 
 app.use(logger('dev'));
-//app.use(express.json());
-app.options('/*', (req, res, next) => {
-     res.header('Access-Control-Allow-Origin', '*');
-     res.header('Access-Control-Allow-Methods', 'GET');
-     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-     res.sendStatus(200);
-});
+app.use(cors());
 app.use('/api/photos', photosRoutes);
+app.use('/api/healthcheck', healthCheckRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('bad request');

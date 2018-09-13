@@ -9,11 +9,10 @@ exports.allPublicPhotos = (req, res) => {
 
     return request(options)
         .then(photos => {
-            const response = {
-                photoList: photos.items.map(item => {
-                    return { url: item.media.m }
-                })
-            }
+
+            const response = photos.items.map(item => {
+                  return { url: item.media.m }
+            })
             return res.send(response);
         })
         .catch(error => {

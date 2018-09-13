@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+import { PhotoService } from './photo.service';
 
 @Component({
   selector: 'flickr-photos',
   templateUrl: './flickrPhotos.component.html',
   styleUrls: ['./flickrPhotos.component.css']
 })
-export class FlickrPhotosComponent {
+export class FlickrPhotosComponent implements OnInit{
 
-  photoList : any;
-  private url = "http://localhost:4000/api/photos";
+  public photoList;
 
-  constructor(private http: Http) {
-    http.get(this.url)
-      .subscribe(response => {
-         this.photoList = response.json();
-      })
+  constructor(private _photoService: PhotoService) {
+  }
 
+  ngOnInit(){
+    this._photoService.getPhotos()
+      .subscribe( res => this.photoList = res );
   }
 
   // createPost(input: HTMLInputElement){

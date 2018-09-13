@@ -1,8 +1,9 @@
+<!-- <input (keyup.enter)="createPost(title)" #title type="text" class="form-control"> -->
 
-<input (keyup.enter)="createPost(title)" #title type="text" class="form-control">
-<p>Photos</p>
-  <ul>
-    <li *ngFor="let photo of photoList">
-      <img [src]="photo.photoUrls"/>
-    </li>
-  </ul>
+<div class="row card-group">
+  <div class="col-4"  *ngFor="let photo of photoList">
+      <div class="card">
+        <img [src]=photo.url>
+      </div>
+  </div>
+</div>

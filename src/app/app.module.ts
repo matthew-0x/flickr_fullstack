@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
+import { PhotoService } from './flickrPhotos/photo.service';
 import { AppComponent } from './app.component';
 import { FlickrPhotosComponent } from './flickrPhotos/flickrPhotos.component';
 import { UiModule } from './ui/ui.module';
@@ -14,15 +14,10 @@ import { UiModule } from './ui/ui.module';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    RouterModule.forRoot([
-      { path: '**', component: AppComponent },
-
-
-    ]),
+    HttpClientModule,
     UiModule
   ],
-  providers: [],
+  providers: [ PhotoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
