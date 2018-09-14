@@ -1,13 +1,15 @@
-<div class="row card-group">
-  <div class="form-inline form-group">
-  <input #searchTerm class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-  <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="search(searchTerm)">Search</button>
+<div class="row">
+  <div class="col-sm form-inline form-group">
+    <input #searchTerm class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+     <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="search(searchTerm)">Search</button>
+  </div>
 </div>
 <div>
-<div class="row card-group">
-    <div class="col-2" *ngFor="let photo of photoList">
-        <div class="card">
+<div class="row">
+    <div class="col-sm" *ngFor="let photo of photoList">
+        <div>
           <img [src]=photo.url>
+          <p></p>
         </div>
-      </div>
     </div>
+</div>
