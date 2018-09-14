@@ -2,10 +2,10 @@ const request = require('request-promise');
 const qs = require('querystringify');
 const options = { json: true };
 
+const url = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
+
 exports.allPublicPhotos = (req, res) => {
 
-   const url = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
-   
    return request(url, options)
         .then(photos => {
             const response = photos.items.map(item => {
@@ -31,10 +31,8 @@ exports.allPublicPhotos = (req, res) => {
 };
 
 exports.findPhoto = (req, res) => {
-    
     const urlQueryString = qs.stringify({ tags: req.query.tags }, '&');
-    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
-       
+    
     return request(url + urlQueryString, options)
         .then(photos => {
             const response = photos.items.map(item => {
