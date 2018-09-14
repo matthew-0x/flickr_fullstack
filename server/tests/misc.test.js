@@ -6,10 +6,10 @@ import app from '../../index';
 chai.config.includeStack = true;
 
 describe('## Misc', () => {
-  describe('# GET /api/health-check', () => {
+  describe('# GET /api/healthcheck', () => {
     it('should return OK', (done) => {
       request(app)
-        .get('/api/health-check')
+        .get('/api/healthcheck')
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.text).to.equal('OK');
@@ -33,15 +33,15 @@ describe('## Misc', () => {
   });
 
 
-  it('should handle express validation error - username is required', (done) => {
+  it('should handle express validation error', (done) => {
     request(app)
-      .post('/api/users')
+      .post('/api/bad')
       .send({
-        mobileNumber: '1234567890'
+        dummy: '1234567890'
       })
       .expect(httpStatus.BAD_REQUEST)
       .then((res) => {
-        expect(res.body.message).to.equal('"username" is required');
+        expect(res.body.message).to.equal('bad request');
         done();
       })
       .catch(done);
