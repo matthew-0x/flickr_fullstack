@@ -1,0 +1,10 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+body {
+    margin-top: 2px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+ }
+
+.white{
+    color: #fff!important
+}

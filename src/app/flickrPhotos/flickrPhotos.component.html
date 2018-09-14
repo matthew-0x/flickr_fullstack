@@ -1,9 +1,13 @@
-<!-- <input (keyup.enter)="createPost(title)" #title type="text" class="form-control"> -->
-
 <div class="row card-group">
-  <div class="col-4"  *ngFor="let photo of photoList">
-      <div class="card">
-        <img [src]=photo.url>
-      </div>
-  </div>
+  <div class="form-inline form-group">
+  <input #searchTerm class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="search(searchTerm)">Search</button>
 </div>
+<div>
+<div class="row card-group">
+    <div class="col-3" *ngFor="let photo of photoList">
+        <div class="card">
+          <img [src]=photo.url>
+        </div>
+      </div>
+    </div>

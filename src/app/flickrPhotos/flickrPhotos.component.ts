@@ -13,21 +13,16 @@ export class FlickrPhotosComponent implements OnInit{
   constructor(private _photoService: PhotoService) {
   }
 
-  ngOnInit(){
+  ngOnInit(){ 
     this._photoService.getPhotos()
-      .subscribe( res => this.photoList = res );
+        .subscribe( res => this.photoList = res );
+        
   }
 
-  // createPost(input: HTMLInputElement){
-  //   let post = { title: input.value };
-  //   input.value ='';
-
-  //   this.http.post(this.url, JSON.stringify(post))
-  //       .subscribe(response => {
-  //          post['id']= response.json().id;
-  //          this.PhotoList.splice(0,0,post);
-  //       });
-  // }
+  search(searchTerm: HTMLInputElement){
+    this._photoService.getPhotosWithTag(searchTerm.value)
+        .subscribe(res => { this.photoList = res });
+  }
 }
 
 
